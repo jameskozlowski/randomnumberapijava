@@ -5,7 +5,7 @@ COPY . /workspace/app
 RUN ./gradlew clean build
 RUN mkdir -p build/dependency && cd build/dependency && jar -xf ../libs/randomnumberapi-0.0.1-SNAPSHOT.jar
 
-FROM openjdk:17-jdk-alpine
+FROM openjdk:17.0.1-slim
 
 COPY --from=build /workspace/app/build/libs/randomnumberapi-0.0.1-SNAPSHOT.jar /app/randomnumberapi-0.0.1-SNAPSHOT.jar
 EXPOSE 8081
